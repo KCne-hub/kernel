@@ -13,15 +13,16 @@ on:
       kernel_source:
         description: "Select the kernel source"
         required: false
-        default: "unifreq"
+        default: "KCne-hub"
         type: choice
         options:
+          - KCne-hub
           - unifreq
           - codesnas
       kernel_version:
         description: "Select kernel version"
         required: false
-        default: "6.6.y"
+        default: "5.15.y"
         type: choice
         options:
           - 5.4.y
@@ -152,7 +153,7 @@ jobs:
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile the kernel [ ${{ inputs.kernel_version }} ]
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: KCne-hub/amlogic-s9xxx-armbian@main
         if: ${{ steps.mapped.outputs.status }} == 'success' && !cancelled()
         with:
           build_target: kernel
