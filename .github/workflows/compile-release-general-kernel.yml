@@ -148,14 +148,14 @@ jobs:
         run: |
           df -hT ${PWD}
           mkdir -p /builder/{kernel,output}
-          mkdir -p /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/kernel/linux-5.15.y
-          mkdir -p /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/output/chroot/root/boot
-          ln -sf /builder/kernel /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/kernel
-          ln -sf /builder/output /home/runner/work/_actions/ophub/amlogic-s9xxx-armbian/main/compile-kernel/output
+          mkdir -p /home/runner/work/_actions/KCne-hub/amlogic-s9xxx-armbian/main/compile-kernel/kernel/linux-5.15.y
+          mkdir -p /home/runner/work/_actions/KCne-hub/amlogic-s9xxx-armbian/main/compile-kernel/output/chroot/root/boot
+          ln -sf /builder/kernel /home/runner/work/_actions/KCne-hub/amlogic-s9xxx-armbian/main/compile-kernel/kernel
+          ln -sf /builder/output /home/runner/work/_actions/KCne-hub/amlogic-s9xxx-armbian/main/compile-kernel/output
           echo "status=success" >> ${GITHUB_OUTPUT}
 
       - name: Compile the kernel [ ${{ inputs.kernel_version }} ]
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: KCne-hub/amlogic-s9xxx-armbian@main
         if: ${{ steps.mapped.outputs.status }} == 'success' && !cancelled()
         with:
           build_target: kernel
